@@ -1,5 +1,8 @@
 HELP.md
 target/
+log/
+imgs/
+.yml
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
@@ -29,3 +32,5 @@ build/
 
 ### VS Code ###
 .vscode/
+imgs/IMG_0707.JPG
+*.JPG
