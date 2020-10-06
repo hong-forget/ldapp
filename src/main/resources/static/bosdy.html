@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <style>
+
+        html,body{
+            padding:0;
+            margin:0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .3);
+        }
+
+        .container{
+            width:600px;height:420px;margin:auto;background:white;
+
+            border:#715a5a 1px solid;
+            box-shadow:2px 2px 10px #715a5a;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<script>
+window.onload = function(){
+
+    //创建一个vue实例
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message:"中国银行深圳西丽支行",
+            message1:"6217852000018193949",
+            message2:"USD",
+            message3:"侯宏伟",
+            message4:"中国银行",
+            message5:"",
+            message6:"",
+            checked: true,
+            checkedNames: ['John'],
+            picked: 'One',
+            selected: 'A',
+            selectedMulit:['B','C'],
+            selectedAutoSign: 'A',
+            options: [
+                { text: '--选择--', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' },
+                { text: 'four', value: 'D' }
+            ],
+            selectedAutoMulit: ['C','D'],
+            optionsMulit: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' },
+                { text: 'four', value: 'D' }
+            ],
+            msg:"马优晨",
+            msg2:123454
+
+        },        
+        mounted:function(){
+          console.log(`${this.msg} 和 ${this.msg2}`);
+        }
+    })
+}
+
+</script>
+<body>
+
+    <div style="padding:80px"></div>
+    <div id="app" class="container">
+        <template >
+
+            <div style="width:100%;background:blue;padding:0 0;color:white">
+                <h4 style="margin:0;padding:5px">China UnionPay</h4>
+            </div>
+            <div style="overflow:hidden">
+            <div style="width:50%;float:left">
+
+
+
+
+                <div style="margin:15px">
+                    <div>账户<span style="color:red;margin-top:0">*</span></div>
+                    <select v-model="selectedAutoSign" style="width:240px;height:30px;background: #F0FFFF;border:1px solid beige">
+                        <option v-for="option in options" v-bind:value="option.value" :key="option.value">{{ option.text }}</option>
+                    </select>
+                    <div style="font-size: 10px;color:gray">&nbsp; </div>
+                </div>
+
+                <div style="margin:15px">
+
+                    <div style="">银行分行全称<span style="color:red;margin-top:0">*</span></div>
+                    <input style="width:232px;height:24px;background: #F0FFFF;border:1px solid beige"  v-model="message" placeholder="">
+                    <div style="font-size: 10px;color:gray">银行分行全称</div>
+                </div>
+
+                <div style="margin:15px">
+
+                    <div style="">银行卡号<span style="color:red;margin-top:0">*</span></div>
+                    <input style="width:232px;height:24px;background: #F0FFFF;border:1px solid beige"  v-model="message1" placeholder="">
+                    <div style="font-size: 10px;color:gray">银行分行全称</div>
+                </div>
+
+                <div style="margin:15px">
+
+                    <div style="">货币<span style="color:red;margin-top:0">*</span></div>
+                    <input style="width:232px;height:24px;background: #F0FFFF;border:1px solid beige"  v-model="message2" placeholder="">
+                </div>
+
+
+
+
+            </div>
+
+            <div style="width:50%;float:left">
+                <div style="margin:15px">
+                    <div>账户持有人姓名<span style="color:red;margin-top:0">*</span></div>
+                    <input style="width:232px;height:24px;background: #F0FFFF;border:1px solid beige"  v-model="message3" placeholder="">
+                    <div style="font-size: 10px;color:gray">姓、名和中间名(如有)</div>
+                </div>
+
+                <div style="margin:15px">
+
+                    <div style="">银行名称<span style="color:red;margin-top:0">*</span></div>
+                    <input style="width:232px;height:24px;background: #F0FFFF;border:1px solid beige"  v-model="message4" placeholder="">
+                    <div style="font-size: 10px;color:gray">银行名称</div>
+
+                </div>
+
+                <div style="margin:15px">
+
+                    <div style="">金额<span style="color:red;margin-top:0">*</span></div>
+                    <input style="width:232px;height:24px;background: #F0FFFF;border:1px solid beige"  v-model="message5" type="number">
+                    <div style="font-size: 10px;color:gray">最低金额 5 USD</div>
+                </div>
+
+                <div style="margin:15px">
+
+                    <div style="">金额(美金)<span style="color:red;margin-top:0">*</span></div>
+                    <input style="width:232px;height:24px;background: #F0FFFF;border:1px solid beige"  v-model="message6" placeholder="">
+                </div>
+            </div>
+
+            </div>
+            <div style="overflow:hidden;">
+                <div style="float:left;padding:0 15px"><button style="color:white;background:blue;padding:5px 10px;border: 1px solid black;">出金</button></div>
+                 <div style="float:right;overflow:hidden;font-size: 10px;color:grey; padding:0 40px;">
+                        <div style="background: #F0FFFF;overflow:hidden;padding:0 20px">
+                        <div style="overflow:hidden;"><div style="float:right;padding:3px 0;">汇率</div></div>
+                        <div style="float:right;width:100%;padding:3px 0">1 USD → 6.4714 CNY | 1CNY → 0.154526 USD</div>
+                        </div>
+                 </div>
+                </div>
+
+            </div>
+            <div style="padding:8px"></div>
+            <div style="font-size: 10px;color:gray;padding:0 15px">提示：当天的出金汇率只做参考，正在的汇率是汇款当天离开系统的汇率。</div>
+
+
+
+        </template>
+    </div>
+
+</body>
+</html>

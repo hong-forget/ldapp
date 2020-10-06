@@ -1,0 +1,50 @@
+server:
+  servlet:
+    context-path: /ldapp
+  ssl:
+      key-store: classpath:4340702_www.czldzx.com.pfx
+      key-store-password: E2T0MwbF
+      keyStoreType: PKCS12
+  port: 8443
+picPath: c:/files/
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://114.215.85.111:3308/ld_app?serverTimezone=UTC
+    username: root
+    password: kiss4at_1
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+
+
+
+logging:
+#  config: classpath:spring-logback.xml
+  level:
+    com.ld.ldapp: DEBUG
+  file:
+    name: log/mylog.log
+
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.ld.ldapp.domain
+  configuration:
+    map-underscore-to-camel-case: true
+
+aliyun:
+  xxxx: zzzzzz
+  yyyy: asdwdasd
+  zzzz: 123123
+  aaaa: aaaaa
+  bbbb: bbbbbbbbbbbbb
+

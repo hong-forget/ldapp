@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<button id="btn" type="button">点我发送请求</button>
+</body>
+<script type="text/javascript">
+        $("#btn").click(function(){
+
+<!--            var url = "ws://114.215.85.111:8080/ldapp/ws/666=123";-->
+            var url = "ws://localhost:8080/ldapp/ws/6?token=";
+
+             var token="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJuYW1lXCI6XCLpu4TniZtcIixcImlkXCI6Nn0iLCJpYXQiOjE1OTc5NTYwNTYsImV4cCI6MTU5ODA0MjQ1Nn0.-25f5YAvrtHcy3eKg1k35s3xrBkkUhKVf2-9iH_V7vUpSpX7X64kP6_7dxhWSSjbjSTgxOaOpBuZfiRnxbl7sQ";
+            // 创建WebSocket 对象
+            var wss = new WebSocket(url+token);
+            //连接成功时，触发事件
+<!--         var wss = new WebSocket(url);-->
+
+
+            console.log("连接"+url+"成功")
+            wss.onopen = function () {
+            alert(1);
+                //请求参数
+                var param = {"id": 1,"command": "account_info","account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59","token":token};
+                // 使用 send() 方法发送数据
+                wss.send(JSON.stringify(param));
+                console.log("数据发送中...");
+            }
+            //接收到服务端响应的数据时，触发事件
+            wss.onmessage = function (evt) {
+                alert(1);
+                var data = evt.data;
+                console.log("收到数据..."+data);
+            }
+            // 断开 web socket 连接成功触发事件
+            wss.onclose = function () {
+                console.log("连接已关闭...");
+            };
+        });
+    </script>
+</html>
